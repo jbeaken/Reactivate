@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -27,6 +28,26 @@ public class ReactorTests {
         range.subscribe(System.out::println, null, null, subscription -> subscription.request(7));
     }
 
+    @Test
+    public void testDoOnNext() {
+        Flux<Integer> range = Flux.range(0, 10);
+    }
+
+    @Test
+    public void testFlatMap() {
+        Flux<String> flux = Flux.just("hello", "world", "here", "we", "go");
+
+        Flux<User> map = flux.map(s -> getUser(s));
+    }
+
+    User getUser(String name) {
+
+        return new User("test");
+    }
+
+    Mono<User> getMonoUser(String name) {
+        return Mono.just(getUser(name));
+    }
 
     @Test
     public void testFluxWithSubscription() {
@@ -41,5 +62,12 @@ public class ReactorTests {
     @AfterEach
     public void afterEach() throws InterruptedException {
         Thread.sleep(2000);
+    }
+
+    private class User {
+        private String name;
+        public User(String name) {
+            this.name = name;
+        }
     }
 }
