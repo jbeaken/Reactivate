@@ -38,10 +38,11 @@ public class ReactorTests {
         Flux<String> flux = Flux.just("hello", "world", "here", "we", "go");
 
         Flux<User> map = flux.map(s -> getUser(s));
+
+        flux.map(s -> getMonoUser(s));
     }
 
     User getUser(String name) {
-
         return new User("test");
     }
 
