@@ -39,7 +39,7 @@ public class ReactorTests {
 
         Flux<User> map = flux.map(s -> getUser(s));
 
-        flux.map(s -> getMonoUser(s));
+        Flux<Mono<User>> map1 = flux.map(s -> getMonoUser(s));
     }
 
     User getUser(String name) {
