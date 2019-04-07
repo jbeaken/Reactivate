@@ -40,6 +40,8 @@ public class ReactorTests {
         Flux<User> map = flux.map(s -> getUser(s));
 
         Flux<Mono<User>> map1 = flux.map(s -> getMonoUser(s));
+
+        flux.flatMap(s -> getMonoUser(s));
     }
 
     User getUser(String name) {
