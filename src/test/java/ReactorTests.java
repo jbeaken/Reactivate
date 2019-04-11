@@ -1,3 +1,6 @@
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -42,6 +45,8 @@ public class ReactorTests {
         Flux<Mono<User>> map1 = flux.map(s -> getMonoUser(s));
 
         Flux<User> userFlux = flux.flatMap(s -> getMonoUser(s));
+
+        userFlux.log().checkpoint().subscribe(System.out::println);
     }
 
     User getUser(String name) {
@@ -67,10 +72,10 @@ public class ReactorTests {
         Thread.sleep(2000);
     }
 
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     private class User {
         private String name;
-        public User(String name) {
-            this.name = name;
-        }
     }
 }
