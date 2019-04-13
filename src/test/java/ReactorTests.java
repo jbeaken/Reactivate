@@ -47,6 +47,8 @@ public class ReactorTests {
         Flux<User> userFlux = flux.flatMap(s -> getMonoUser(s));
 
         userFlux.log().checkpoint().subscribe(System.out::println);
+
+        flux.checkpoint().log();
     }
 
     User getUser(String name) {
