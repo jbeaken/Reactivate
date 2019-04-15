@@ -48,7 +48,7 @@ public class ReactorTests {
 
         userFlux.log().checkpoint().subscribe(System.out::println);
 
-        flux.checkpoint().log();
+        flux.checkpoint().log().map(String::toUpperCase);
     }
 
     User getUser(String name) {
