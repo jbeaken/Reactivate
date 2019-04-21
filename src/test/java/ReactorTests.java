@@ -50,7 +50,7 @@ public class ReactorTests {
     }
 
     User getUser(String name) {
-        return new User("test");
+        return new User(name);
     }
 
     Mono<User> getMonoUser(String name) {
