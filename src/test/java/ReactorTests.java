@@ -1,6 +1,7 @@
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -11,6 +12,7 @@ import reactor.core.scheduler.Schedulers;
 import java.io.Serializable;
 import java.time.Duration;
 
+@Slf4j
 public class ReactorTests {
 
     @Test
@@ -53,7 +55,7 @@ public class ReactorTests {
                 .map(String::toUpperCase)
                 .publishOn(Schedulers.elastic())
                 .flatMap(s -> getMonoUser(s))
-                .subscribe(System.out::println);
+                .subscribe(s -> log.info(s););
     }
 
     User getUser(String name) {
