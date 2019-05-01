@@ -55,7 +55,7 @@ public class ReactorTests {
                 .map(String::toUpperCase)
                 .publishOn(Schedulers.elastic())
                 .flatMap(s -> getMonoUser(s))
-                .subscribe(s -> log.info(s) );
+                .subscribe(s -> log.info(s.toString()));
     }
 
     User getUser(String name) {
