@@ -16,32 +16,12 @@ import java.time.Duration;
 public class ReactorTests {
 
     @Test
-    public void testBasicFlux() {
+    public void testMerge() {
 
-        Flux<String> stringFlux = Flux.just("hello", "world");
-        Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
-
-        Flux<? extends Serializable> merge = Flux.merge(stringFlux, interval);
-
-        stringFlux.subscribe(System.out::println);
-        merge.subscribe(System.out::println);
     }
 
     @Test
-    public void testFourOfTenFlux() {
-
-        Flux<Integer> range = Flux.range(0, 10);
-
-        range.subscribe(System.out::println, null, null, subscription -> subscription.request(7));
-    }
-
-    @Test
-    public void testDoOnNext() {
-        Flux<Integer> range = Flux.range(0, 10);
-    }
-
-    @Test
-    public void testFlatMap() {
+    public void testOperators() {
         Flux<String> flux = Flux.just("hello", "world", "here", "we", "go");
 
         Flux<User> map = flux.map(s -> getUser(s));
