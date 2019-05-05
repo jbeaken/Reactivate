@@ -17,7 +17,8 @@ public class ReactorTests {
 
     @Test
     public void testMerge() {
-
+        Flux<Integer> flux1 = Flux.range(0, 4);
+        Flux<Integer> flux2 = Flux.range(0, 4);
     }
 
     @Test
