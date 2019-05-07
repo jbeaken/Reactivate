@@ -19,6 +19,10 @@ public class ReactorTests {
     public void testMerge() {
         Flux<Integer> flux1 = Flux.range(0, 4);
         Flux<Integer> flux2 = Flux.range(0, 4);
+
+        flux1.delayElements(Duration.ofSeconds(2));
+
+        flux2.delayElements(Duration.ofSeconds(4));
     }
 
     @Test
