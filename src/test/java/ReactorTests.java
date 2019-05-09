@@ -8,6 +8,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
+import reactor.test.StepVerifier;
+import reactor.util.function.Tuple2;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -23,6 +25,11 @@ public class ReactorTests {
         flux1.delayElements(Duration.ofSeconds(2));
 
         flux2.delayElements(Duration.ofSeconds(4));
+
+        //merge
+        Flux merge = Flux.zip(flux1, flux2);
+
+        StepVerifier.create(merge).expectNext(00).verifyComplete();
     }
 
     @Test
