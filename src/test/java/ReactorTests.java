@@ -1,3 +1,4 @@
+import com.sun.tools.javac.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,7 @@ public class ReactorTests {
         //merge
         Flux merge = Flux.zip(flux1, flux2);
 
-        StepVerifier.create(merge).expectNext(00).verifyComplete();
+        StepVerifier.create(merge).expectNext(List.of(0, 0)).verifyComplete();
     }
 
     @Test
