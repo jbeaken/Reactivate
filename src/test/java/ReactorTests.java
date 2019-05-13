@@ -1,4 +1,3 @@
-import com.sun.tools.javac.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +13,7 @@ import reactor.util.function.Tuple2;
 
 import java.io.Serializable;
 import java.time.Duration;
+import java.util.List;
 
 @Slf4j
 public class ReactorTests {
