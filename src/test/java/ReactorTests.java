@@ -20,8 +20,8 @@ public class ReactorTests {
 
     @Test
     public void testMerge() {
-        Flux<Integer> flux1 = Flux.range(0, 4);
-        Flux<Integer> flux2 = Flux.range(0, 4);
+        Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
+        Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
 
         flux1.delayElements(Duration.ofSeconds(2));
 
@@ -30,7 +30,7 @@ public class ReactorTests {
         //merge
         Flux merge = Flux.zip(flux1, flux2).log();
 
-        StepVerifier.create(merge).verifyComplete();
+        StepVerifier.create(merge).expectNext("A1").verifyComplete();
     }
 
     @Test
