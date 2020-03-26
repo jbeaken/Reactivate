@@ -34,6 +34,21 @@ public class ReactorTests {
     }
 
     @Test
+    public void testConcat() {
+        Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
+        Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
+
+        flux1.delayElements(Duration.ofSeconds(2));
+
+        flux2.delayElements(Duration.ofSeconds(4));
+
+        //merge
+        Flux merge = Flux.zip(flux1, flux2).log();
+
+        StepVerifier.create(merge).expectNext("A").verifyComplete();
+    }
+
+    @Test
     public void testOperators() {
         Flux<String> flux = Flux.just("hello", "world", "here", "we", "go");
 
