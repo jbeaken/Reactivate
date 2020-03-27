@@ -43,7 +43,7 @@ public class ReactorTests {
         flux2.delayElements(Duration.ofSeconds(4));
 
         //merge
-        Flux merge = Flux.zip(flux1, flux2).log();
+        Flux merge = Flux.merge(flux1, flux2).log();
 
         StepVerifier.create(merge).expectNext("A").verifyComplete();
     }
