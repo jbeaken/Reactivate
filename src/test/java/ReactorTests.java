@@ -34,7 +34,7 @@ public class ReactorTests {
     }
 
     @Test
-    public void testConcat() {
+    public void textMerge() {
         Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
         Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
 
@@ -45,7 +45,7 @@ public class ReactorTests {
         //merge
         Flux merge = Flux.merge(flux1, flux2).log();
 
-        StepVerifier.create(merge).expectNext("A", "B").verifyComplete();
+        StepVerifier.create(merge).expectNext("A", "B", "C", "D", "E", "1", "2", "3", "4", "5").verifyComplete();
     }
 
     @Test
