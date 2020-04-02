@@ -42,7 +42,6 @@ public class ReactorTests {
 
         flux2.delayElements(Duration.ofSeconds(4));
 
-        //merge
         Flux merge = Flux.merge(flux1, flux2).log();
 
         StepVerifier.create(merge).expectNext("A", "B", "C", "D", "E", "1", "2", "3", "4", "5").verifyComplete();
