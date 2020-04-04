@@ -19,7 +19,7 @@ import java.util.List;
 public class ReactorTests {
 
     @Test
-    public void testMerge() {
+    public void testZip() {
         Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
         Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
 
@@ -34,7 +34,7 @@ public class ReactorTests {
     }
 
     @Test
-    public void textMerge() {
+    public void testMerge() {
         Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
         Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
 
