@@ -32,12 +32,8 @@ public class ReactorTests {
 
     @Test
     public void testMerge() {
-        Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
-        Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
-
-        flux1.delayElements(Duration.ofSeconds(2));
-
-        flux2.delayElements(Duration.ofSeconds(4));
+        Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E").delayElements(Duration.ofSeconds(1));;
+        Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5").delayElements(Duration.ofSeconds(2));;
 
         Flux merge = Flux.merge(flux1, flux2).log();
 
