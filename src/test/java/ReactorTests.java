@@ -37,7 +37,7 @@ public class ReactorTests {
 
         Flux merge = Flux.merge(flux1, flux2).log();
 
-        StepVerifier.create(merge).expectNext("A", "1", "B", "C", "2", "1", "2", "3", "4", "5").verifyComplete();
+        StepVerifier.create(merge).expectNext("A", "1", "B", "C", "2", "D", "E", "3", "4", "5").verifyComplete();
     }
 
     @Test
