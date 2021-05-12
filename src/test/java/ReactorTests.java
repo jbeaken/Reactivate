@@ -16,7 +16,16 @@ import java.util.List;
 public class ReactorTests {
 
     @Test
-    public void testZip() {
+    void testFilter() {
+        Flux<Integer> flux = Flux.just(1, 44, 45, 55, 33, 4, 55);
+
+        flux.filter(x -> x > 30)
+                .log()
+                .subscribe();
+    }
+
+    @Test
+    void testZip() {
         Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E");
         Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5");
 
@@ -31,7 +40,7 @@ public class ReactorTests {
     }
 
     @Test
-    public void testMerge() {
+    void testMerge() {
         Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E").delayElements(Duration.ofSeconds(1));;
         Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5").delayElements(Duration.ofSeconds(2));;
 
@@ -41,7 +50,7 @@ public class ReactorTests {
     }
 
     @Test
-    public void testConcat() {
+    void testConcat() {
         Flux<String> flux1 = Flux.just("A", "B", "C", "D", "E").delayElements(Duration.ofSeconds(1));;
         Flux<String> flux2 = Flux.just("1", "2", "3", "4", "5").delayElements(Duration.ofSeconds(2));;
 
@@ -51,7 +60,7 @@ public class ReactorTests {
     }
 
     @Test
-    public void testOperators() {
+    void testOperators() {
         Flux<String> flux = Flux.just("hello", "world", "here", "we", "go");
 
         Flux<User> map = flux.map(s -> getUser(s));
@@ -77,7 +86,7 @@ public class ReactorTests {
     }
 
     @Test
-    public void testFluxWithSubscription() {
+    void testFluxWithSubscription() {
 
         Flux<String> stringFlux = Flux.just("hello", "world");
         Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
@@ -87,14 +96,14 @@ public class ReactorTests {
 
 
     @AfterEach
-    public void afterEach() throws InterruptedException {
+    void afterEach() throws InterruptedException {
         Thread.sleep(2000);
     }
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    private class User {
+    class User {
         private String name;
     }
 }
