@@ -11,7 +11,7 @@ class OnPublishTests {
 
         Flux.just(1, 2, 3, 4)
                 .doOnNext(s -> System.out.println(s + " before publishOn using thread: " + Thread.currentThread().getName()))
-                .publishOn(Schedulers.boundedElastic())
+//                .publishOn(Schedulers.boundedElastic())
                 .doOnNext(s -> System.out.println(s + " after publishOn using thread: " + Thread.currentThread().getName()))
                 .subscribe();
 

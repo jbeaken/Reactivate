@@ -10,14 +10,6 @@ class FilterTests {
 
         Integer[] intArray = {1, 2, 3, 4, 4, 5, 6, 7, 7, 7};
 
-        Flux<Integer> flux = Flux.just(intArray);
-
-        flux
-                .filter( x -> x > 5)
-                .distinct()
-                .log()
-                .subscribe();
-
     }
 
 }
