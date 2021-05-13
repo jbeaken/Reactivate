@@ -10,7 +10,7 @@ class OnPublishTests {
     void testPublishOn() {
 
         Flux.just(1, 2, 3, 4)
-                // this is influenced by subscribeOn
+                // this is on main
                 .doOnNext(s -> System.out.println(s + " before publishOn using thread: " + Thread.currentThread().getName()))
                 .publishOn(Schedulers.boundedElastic())
                 // the rest is influenced by publishOn
