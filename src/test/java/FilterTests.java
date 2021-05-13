@@ -8,11 +8,14 @@ class FilterTests {
     @Test
     void testFilter() {
 
-        Flux<Integer> flux = Flux.just(10, 44, 45, 55, 33, 4, 55);
+        Flux<Integer> integerFlux = Flux.just(1, 4, 5, 7, 4, 8, 8, 8);
 
-        flux.filter(x -> x > 30)
+        integerFlux
+                .filter(x -> x > 4)
+                .distinct()
                 .log()
                 .subscribe();
+
     }
 
 }
