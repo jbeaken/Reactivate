@@ -6,12 +6,14 @@ import reactor.core.publisher.Flux;
 class FilterTests {
 
     @Test
-    void testFilter() {
+    void test() {
 
-        Flux<Integer> integerFlux = Flux.just(1, 4, 5, 7, 4, 8, 8, 8);
+        Integer[] intArray = {1, 2, 3, 4, 4, 5, 6, 7, 7, 7};
 
-        integerFlux
-                .filter(x -> x > 4)
+        Flux<Integer> flux = Flux.just(intArray);
+
+        flux
+                .filter( x -> x > 5)
                 .distinct()
                 .log()
                 .subscribe();
