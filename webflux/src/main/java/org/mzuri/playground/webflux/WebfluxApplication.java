@@ -13,6 +13,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.blockhound.BlockHound;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -22,6 +23,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.st
 public class WebfluxApplication {
 
 	public static void main(String[] args) {
+		BlockHound.install();
 		SpringApplication.run(WebfluxApplication.class, args);
 	}
 
