@@ -23,7 +23,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.st
 public class WebfluxApplication {
 
 	public static void main(String[] args) {
-		BlockHound.install();
+//		BlockHound.install();
 		SpringApplication.run(WebfluxApplication.class, args);
 	}
 
