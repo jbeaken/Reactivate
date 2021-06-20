@@ -1,4 +1,4 @@
-package org.mzuri.playground.webflux;
+package org.mzuri.playground.webflux.sftp;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,6 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.blockhound.BlockHound;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.HttpStatus.OK;
@@ -26,36 +25,5 @@ public class WebfluxApplication {
 //		BlockHound.install();
 		SpringApplication.run(WebfluxApplication.class, args);
 	}
-
 }
 
-@Configuration
-class DocumentRouter {
-
-	@Bean
-	public RouterFunction<ServerResponse> routes(SftpHandler sftpHandler) {
-		return RouterFunctions.route()
-				.path("/",
-						builder -> builder.GET("/upload", sftpHandler::upload))
-				.build();
-	}
-}
-
-@Component
-@RequiredArgsConstructor
-@Slf4j
-class SftpHandler {
-
-	@Autowired
-	private SftpService sftpService;
-
-	public Mono<ServerResponse> upload(ServerRequest request) {
-
-		sftpService.upload();
-
-		return status(OK)
-				.contentType(MediaType.TEXT_PLAIN)
-				.bodyValue("all-good");
-
-	}
-}

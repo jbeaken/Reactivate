@@ -1,4 +1,4 @@
-package org.mzuri.playground.webflux;
+package org.mzuri.playground.webflux.sftp;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.sftp.session.DefaultSftpSessionFactory;
@@ -22,7 +22,7 @@ public class SftpService {
             session.write(inputStream, "/upload/hello");
         } catch (IOException e) {
             log.error("Error", e);
-            return Mono.just("not good");
+            return Mono.error(() -> new RuntimeException("not good"));
         }
 
         return Mono.just( "all-good" );
