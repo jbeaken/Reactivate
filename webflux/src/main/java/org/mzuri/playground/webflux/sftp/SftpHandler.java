@@ -15,14 +15,14 @@ import static org.springframework.web.reactive.function.server.ServerResponse.st
 @Component
 @RequiredArgsConstructor
 @Slf4j
-class SftpHandler {
+public class SftpHandler {
 
     @Autowired
     private SftpService sftpService;
 
     public Mono<ServerResponse> upload(ServerRequest request) {
 
-        sftpService.upload();
+        Mono<String> upload = sftpService.upload();
 
         return status(OK)
                 .contentType(MediaType.TEXT_PLAIN)

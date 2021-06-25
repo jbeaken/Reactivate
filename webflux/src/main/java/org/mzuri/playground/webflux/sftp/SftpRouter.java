@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
-class DocumentRouter {
+public class SftpRouter {
 
     @Bean
     public RouterFunction<ServerResponse> routes(SftpHandler sftpHandler) {
