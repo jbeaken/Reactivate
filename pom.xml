@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>webflux</module>
-        <module>Reactor</module>
+        <module>reactor</module>
     </modules>
 
     <properties>
