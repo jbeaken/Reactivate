@@ -12,8 +12,7 @@ public class SftpRouter {
     @Bean
     public RouterFunction<ServerResponse> routes(SftpHandler sftpHandler) {
         return RouterFunctions.route()
-                .path("/",
-                        builder -> builder.GET("/upload", sftpHandler::upload))
+                .path("/", builder -> builder.GET("/upload", sftpHandler::upload))
                 .build();
     }
 }
