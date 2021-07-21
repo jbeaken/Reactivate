@@ -10,7 +10,6 @@ import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
-import java.util.List;
 
 @Slf4j
 public class ReactorTests {
@@ -21,6 +20,8 @@ public class ReactorTests {
 
         flux.filter(x -> x > 30)
                 .log();
+
+        StepVerifier.create(flux).expectNextCount(7).verifyComplete();
     }
 
     @Test
