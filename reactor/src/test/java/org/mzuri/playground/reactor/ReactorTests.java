@@ -4,6 +4,8 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
@@ -14,11 +16,14 @@ import java.time.Duration;
 @Slf4j
 public class ReactorTests {
 
+
+    private Logger logger = LoggerFactory.getLogger(ReactorTests.class);
+
     @Test
     void testFilter() {
-        Flux<Integer> flux = Flux.just(10, 44, 45, 55, 33, 4, 55);
 
-        flux.filter(x -> x > 30)
+        Flux<Integer> flux = Flux
+                .just(10, 44, 45, 55, 33, 4, 55)
                 .log();
 
         StepVerifier.create(flux).expectNextCount(7).verifyComplete();
@@ -74,7 +79,7 @@ public class ReactorTests {
                 .map(String::toUpperCase)
                 .publishOn(Schedulers.elastic())
                 .flatMap(s -> getMonoUser(s))
-                .subscribe(s -> log.info(s.toString()));
+                .subscribe();
     }
 
     User getUser(String name) {
