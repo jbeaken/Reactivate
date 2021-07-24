@@ -1,3 +1,5 @@
+package org.mzuri.playground.reactor;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

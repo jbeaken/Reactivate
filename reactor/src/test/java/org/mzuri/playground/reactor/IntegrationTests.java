@@ -1,3 +1,5 @@
+package org.mzuri.playground.reactor;
+
 import org.junit.Test;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
