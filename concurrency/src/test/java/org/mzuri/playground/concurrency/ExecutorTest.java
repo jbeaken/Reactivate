@@ -1,5 +1,6 @@
 package org.mzuri.playground.concurrency;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,17 +13,32 @@ public class ExecutorTest {
 
     Logger logger = LoggerFactory.getLogger(ExecutorTest.class);
 
+    String thread1Name;
+    String thread2Name;
+
     @Test
-    void testExecutor() {
+    void testNewFixedThreadPoolRunsOnDifferentThreads() {
+
+
+
         ExecutorService executorService = Executors.newFixedThreadPool(4);
 
         executorService.submit(() -> {
-            logger.info("On thread {}", Thread.currentThread().getName());
+            thread1Name = getThreadName();
+            logger.info("On thread {}", thread1Name);
+
         });
 
         executorService.submit(() -> {
-            logger.info("On thread {}", Thread.currentThread().getName());
+            thread2Name = getThreadName();
+            logger.info("On thread {}", thread2Name);
         });
 
+        Assertions.assertNotEquals(thread1Name, thread2Name);
+
+    }
+
+    private String getThreadName() {
+        return Thread.currentThread().getName();
     }
 }
