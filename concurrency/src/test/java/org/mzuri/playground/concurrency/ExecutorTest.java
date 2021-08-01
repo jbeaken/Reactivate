@@ -19,8 +19,6 @@ public class ExecutorTest {
     @Test
     void testNewFixedThreadPoolRunsOnDifferentThreads() {
 
-
-
         ExecutorService executorService = Executors.newFixedThreadPool(4);
 
         executorService.submit(() -> {
@@ -35,7 +33,25 @@ public class ExecutorTest {
         });
 
         Assertions.assertNotEquals(thread1Name, thread2Name);
+    }
 
+    @Test
+    void testNewSingleThreadExecutorRunsOnSameThread() {
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.submit(() -> {
+            thread1Name = getThreadName();
+            logger.info("On thread {}", thread1Name);
+
+        });
+
+        executorService.submit(() -> {
+            thread2Name = getThreadName();
+            logger.info("On thread {}", thread2Name);
+        });
+
+        Assertions.assertEquals(thread1Name, thread2Name);
     }
 
     private String getThreadName() {
