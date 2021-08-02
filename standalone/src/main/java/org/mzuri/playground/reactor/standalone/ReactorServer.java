@@ -6,7 +6,7 @@ import reactor.netty.http.server.HttpServer;
 
 public class ReactorServer {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         HttpServer server = HttpServer.create()   // Prepares an HTTP server ready for configuration
                 .port(8080)    // Configures the port number as zero, this will let the system pick up
