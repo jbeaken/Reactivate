@@ -10,7 +10,6 @@ import java.util.concurrent.Executors;
 
 public class ExecutorTest {
 
-
     Logger logger = LoggerFactory.getLogger(ExecutorTest.class);
 
     String thread1Name;
