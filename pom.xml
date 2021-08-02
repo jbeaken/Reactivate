@@ -12,6 +12,7 @@
         <module>webflux</module>
         <module>reactor</module>
         <module>concurrency</module>
+        <module>standalone</module>
     </modules>
 
     <properties>
