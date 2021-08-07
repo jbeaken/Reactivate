@@ -25,7 +25,7 @@ public class ReactorProcessor {
         Disposable disposable = publish.connect();
 
         // It's multi-thread so wait a sec to receive.
-//        Thread.sleep(5000);
+        Thread.sleep(5000);
 
         disposable.dispose();
     }
