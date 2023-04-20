@@ -16,11 +16,11 @@ public class MonoVsFlatMap {
     @Test
     void testMap() {
         Function<String, String> mapper = String::toUpperCase;
-        Flux<String> inFlux = Flux.just("baeldung", ".", "com");
+        Flux<String> inFlux = Flux.just("testing", ".", "com");
         Flux<String> outFlux = inFlux.map(mapper);
 
         outFlux.as(StepVerifier::create)
-                .expectNext("BAELDUNG", ".", "COM")
+                .expectNext("TESTING", ".", "COM")
                 .expectComplete()
                 .verify();
 
@@ -30,12 +30,12 @@ public class MonoVsFlatMap {
     void testFlatMap() {
         Function<String, Publisher<String>> mapper = s -> Flux.just(s.toUpperCase().split(""));
 
-        Flux<String> inFlux = Flux.just("baeldung", ".", "com");
+        Flux<String> inFlux = Flux.just("TESTING", ".", "com");
         Flux<String> outFlux = inFlux.flatMap(mapper);
 
         List<String> output = new ArrayList<>();
         outFlux.subscribe(output::add);
-        assertThat(output).containsExactlyInAnyOrder("B", "A", "E", "L", "D", "U", "N", "G", ".", "C", "O", "M");
+        assertThat(output).containsExactlyInAnyOrder("T", "E", "S", "T", "I", "N", "G", ".", "C", "O", "M");
 
     }
 }
