@@ -7,7 +7,6 @@ import reactor.core.scheduler.Schedulers;
 
 class OnPublishTests {
 
-
     @Test
     void testPublishOn() {
 
@@ -18,5 +17,4 @@ class OnPublishTests {
                 .subscribe();
 
     }
-
 }
