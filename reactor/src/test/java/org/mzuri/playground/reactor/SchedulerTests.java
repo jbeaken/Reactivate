@@ -23,7 +23,7 @@ public class SchedulerTests {
                 .publishOn(Schedulers.boundedElastic())
                 .doOnNext(v -> System.out.println("publish " + Thread.currentThread().getName()))
                 .delayElements(Duration.ofMillis(500))
-                .subscribeOn(Schedulers.elastic())
+                .subscribeOn(Schedulers.boundedElastic())
                 .subscribe(v -> System.out.println(v + " delayed " + Thread.currentThread().getName()));
 
         Thread.sleep(1000);

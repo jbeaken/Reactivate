@@ -79,7 +79,7 @@ public class ReactorTests {
         flux.checkpoint()
                 .log()
                 .map(String::toUpperCase)
-                .publishOn(Schedulers.elastic())
+                .publishOn(Schedulers.boundedElastic())
                 .flatMap(s -> getMonoUser(s))
                 .subscribe();
     }
